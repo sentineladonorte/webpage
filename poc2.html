@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>JavascriptInterface Enumerator</title>
+</head>
+
+<body>
+    <script>
+        isWebKit = function () {
+            return "webkitLineBreak" in document.documentElement.style;
+        };
+
+        getAllFunctions = function (obj) {
+            var result;
+
+            try {
+                if (isWebKit()) {
+                    var result1 = Reflect.ownKeys(Reflect.getPrototypeOf(obj)).filter(function (p) {
+                        return typeof obj[p] === "function";
+                    });
+
+                    var result2 = [];
+
+                    for (property in obj) {
+                        if (typeof (obj[property]) === 'function') {
+                            result2.push(property)
+                        }
+                    }
+
+                    // Merge results
+                    result = [];
+                    for (var i = 0; i < result1.length; i++) {
+                        result.push(result1[i]);
+                    }
+
+                    for (var i = 0; i < result2.length; i++) {
+                        result.push(result2[i]);
+                    }
+
+                    result = Array.from(new Set(result));
+                }
+                else {
+                    result = Object.getOwnPropertyNames(obj).filter(function (p) {
+                        return typeof obj[p] === 'function';
+                    });
+                }
+            } catch (e) {
+                result = [];
+            }
+
+            return result;
+        };
+
+        getAllOtherProperties = function (obj) {
+            var result;
+
+            try {
+                if (isWebKit()) {
+                    var result1 = Reflect.ownKeys(Reflect.getPrototypeOf(obj)).filter(function (p) {
+                        return typeof obj[p] !== "function";
+                    });
+
+                    var result2 = [];
+
+                    for (property in obj) {
+                        if (typeof (obj[property]) !== 'function') {
+                            result2.push(property)
+                        }
+                    }
+
+                    // Merge results
+                    result = [];
+                    for (var i = 0; i < result1.length; i++) {
+                        result.push(result1[i]);
+                    }
+
+                    for (var i = 0; i < result2.length; i++) {
+                        result.push(result2[i]);
+                    }
+
+                    result = Array.from(new Set(result));
+                }
+                else {
+                    result = Object.getOwnPropertyNames(obj).filter(function (p) {
+                        return typeof obj[p] !== 'function';
+                    });
+                }
+            } catch (e) {
+                result = [];
+            }
+
+            return result;
+        };
+
+        var describeObject = function (obj_name, obj) {
+            document.write(obj_name + "<br>");
+
+            functions = getAllFunctions(obj);
+            properties = getAllOtherProperties(obj);
+
+            document.write('<pre>');
+
+            document.write("    functions:\n");
+            for (var i = 0; i < functions.length; i++) {
+                try {
+                    document.write("       " + functions[i] + "\n");
+                } catch (e) { }
+            }
+
+            document.write("\n");
+
+            document.write("    properties:\n");
+            for (var i = 0; i < properties.length; i++) {
+                try {
+                    document.write("        " + properties[i] + "\n");
+                } catch (e) { }
+            }
+
+            document.write("\n</pre><hr>");
+        };
+
+        var listNonDefaultObjects = function () {
+            DEFAULT_OBJECTS = ['postMessage', 'blur', 'focus', 'close', 'frames', 'self', 'window', 'parent', 'opener', 'top', 'length', 'closed', 'location', 'document', 'origin', 'name', 'history', 'locationbar', 'menubar', 'personalbar', 'scrollbars', 'statusbar', 'toolbar', 'status', 'frameElement', 'navigator', 'customElements', 'external', 'screen', 'innerWidth', 'innerHeight', 'scrollX', 'pageXOffset', 'scrollY', 'pageYOffset', 'screenX', 'screenY', 'outerWidth', 'outerHeight', 'devicePixelRatio', 'clientInformation', 'screenLeft', 'screenTop', 'defaultStatus', 'defaultstatus', 'styleMedia', 'onanimationend', 'onanimationiteration', 'onanimationstart', 'onsearch', 'ontransitionend', 'onwebkitanimationend', 'onwebkitanimationiteration', 'onwebkitanimationstart', 'onwebkittransitionend', 'isSecureContext', 'onabort', 'onblur', 'oncancel', 'oncanplay', 'oncanplaythrough', 'onchange', 'onclick', 'onclose', 'oncontextmenu', 'oncuechange', 'ondblclick', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'ondurationchange', 'onemptied', 'onended', 'onerror', 'onfocus', 'oninput', 'oninvalid', 'onkeydown', 'onkeypress', 'onkeyup', 'onload', 'onloadeddata', 'onloadedmetadata', 'onloadstart', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onpause', 'onplay', 'onplaying', 'onprogress', 'onratechange', 'onreset', 'onresize', 'onscroll', 'onseeked', 'onseeking', 'onselect', 'onstalled', 'onsubmit', 'onsuspend', 'ontimeupdate', 'ontoggle', 'onvolumechange', 'onwaiting', 'onwheel', 'onauxclick', 'ongotpointercapture', 'onlostpointercapture', 'onpointerdown', 'onpointermove', 'onpointerup', 'onpointercancel', 'onpointerover', 'onpointerout', 'onpointerenter', 'onpointerleave', 'onafterprint', 'onbeforeprint', 'onbeforeunload', 'onhashchange', 'onlanguagechange', 'onmessage', 'onmessageerror', 'onoffline', 'ononline', 'onpagehide', 'onpageshow', 'onpopstate', 'onrejectionhandled', 'onstorage', 'onunhandledrejection', 'onunload', 'performance', 'stop', 'open', 'alert', 'confirm', 'prompt', 'print', 'requestAnimationFrame', 'cancelAnimationFrame', 'requestIdleCallback', 'cancelIdleCallback', 'captureEvents', 'releaseEvents', 'getComputedStyle', 'matchMedia', 'moveTo', 'moveBy', 'resizeTo', 'resizeBy', 'getSelection', 'find', 'webkitRequestAnimationFrame', 'webkitCancelAnimationFrame', 'fetch', 'btoa', 'atob', 'setTimeout', 'clearTimeout', 'setInterval', 'clearInterval', 'createImageBitmap', 'scroll', 'scrollTo', 'scrollBy', 'onappinstalled', 'onbeforeinstallprompt', 'crypto', 'ondevicemotion', 'ondeviceorientation', 'ondeviceorientationabsolute', 'indexedDB', 'webkitStorageInfo', 'sessionStorage', 'localStorage', 'orientation', 'onorientationchange', 'visualViewport', 'applicationCache', 'ontouchcancel', 'ontouchend', 'ontouchmove', 'ontouchstart', 'poc', 'listAllObjects', 'searchForInterfaces', 'TEMPORARY', 'PERSISTENT', 'addEventListener', 'removeEventListener', 'dispatchEvent'];
+
+            MY_JUNK = ['MY_JUNK', 'DEFAULT_OBJECTS', 'listNonDefaultObjects', 'listAllObjects', 'searchForInterfaces', 'describeObject', 'getAllFunctions', 'getAllOtherProperties', 'poc', 'isWebKit'];
+
+            for (name in this) {
+                if (DEFAULT_OBJECTS.indexOf(name) == -1 && MY_JUNK.indexOf(name) == -1) {
+                    //document.write(name + "<br>");
+                    describeObject(name, window[name]);
+                }
+            }
+        };
+
+        var listAllObjects = function () {
+            for (name in this) {
+                document.write(name + "<br>");
+            }
+        };
+
+        var searchForInterfaces = function () {
+            for (name in this) {
+                list_possible_interfaces = ["js", "interface", "android"];
+
+                for (possible_if in list_possible_interfaces) {
+                    if (name.toLowerCase().indexof(possible_if.tolowercase()) != -1) {
+                        document.write(name + "<br>");
+                    }
+                }
+            }
+        };
+
+        var poc = function () {
+            alert("Hello World!")
+        };
+
+        // This will call efectively the implemented functions
+        listNonDefaultObjects();
+
+        //poc();
+    </script>
+</body>
+
+</html>
