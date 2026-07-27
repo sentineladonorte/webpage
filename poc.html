@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <h1>Teste 42.1</h1>
+    <h1>Teste 42.2</h1>
     <br>
     <h2 id="result">
         X
@@ -50,7 +50,7 @@
 
         bridge.call("getUserAuth", {}, function(res){  
             
-            document.getElementById("result").innerHTML = JSON.parse(res)
+            document.getElementById("result").innerHTML = res.data.authtoken
             
             
             // const jwt = unwrap(resp);  
