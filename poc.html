@@ -32,9 +32,10 @@
                 // alert(value)
 
                 // const js = JSON.parse(value)
-                const st = String(value)
+                const x = JSON.stringify(value)
+                // const st = String(value)
 
-                document.getElementById("batata").innerHTML = st
+                document.getElementById("batata").innerHTML = x
                 // fetch(webhook + "?data=" + value, { mode: "no-cors" })
     
             })
@@ -48,7 +49,7 @@
 <script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.min.js"></script>
 
 <body>
-    <h1>Teste 10</h1>
+    <h1>Teste 11</h1>
     <br>
     <h2 id="batata">batata</h2>
 </body>
