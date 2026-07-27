@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <h1>Teste 42</h1>
+    <h1>Teste 42.1</h1>
     <br>
     <h2 id="result">
         X
@@ -45,12 +45,12 @@
 
 <script>
     document.addEventListener("DOMContentLoaded",()=>{  
-    const bridge = window.dsBridge || window._dsbridge;  
-    if(!bridge || !bridge.call){ return; }  
+        const bridge = window.dsBridge || window._dsbridge;  
+        if(!bridge || !bridge.call){ return; }  
 
-        bridge.call("getUserAuth", {}, function(resp){  
+        bridge.call("getUserAuth", {}, function(res){  
             
-            document.getElementById("result").innerHTML = resp
+            document.getElementById("result").innerHTML = JSON.parse(res)
             
             
             // const jwt = unwrap(resp);  
@@ -62,3 +62,5 @@
 </script>
   
 </html>
+
+<!-- adb shell am start -a android.intent.action.VIEW -d "mhlcrypto://showPage?url=https://sentineladonorte.com/poc.html" com.mobilehackinglab.exchange/.SplashActivity -->
