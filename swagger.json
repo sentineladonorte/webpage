@@ -1,9 +1,14 @@
 {
-    "url": "https://sentineladonorte.com/",
-    "urls": [
-        {
-            "url": "https://sentineladonorte.com/swagger.yaml",
-            "name": "XSS payload"
-        }
-    ]
+  "swagger": "2.0",
+  "info": {
+    "title": "XSS Test",
+    "version": "1.0"
+  },
+  "url": "https://sentineladonorte.com/",
+  "urls": [
+      {
+          "url": "https://sentineladonorte.com/swagger.yaml",
+          "name": "XSS payload"
+      }
+  ]
 }
