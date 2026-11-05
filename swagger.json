@@ -1,40 +1,9 @@
 {
-
-  "swagger": "2.0",
-
-  "info": {
-
-    "title": "XSS Test",
-
-    "version": "1.0"
-
-  },
-
-  "paths": {
-
-    "/xss": {
-
-      "get": {
-
-        "summary": "XSS Test",
-
-        "description": "<script>alert(1337)</script>",
-
-        "responses": {
-
-          "200": {
-
-            "description": "Success"
-
-          }
-
+    "url": "https://sentineladonorte.com/",
+    "urls": [
+        {
+            "url": "https://sentineladonorte.com/swagger.yaml",
+            "name": "XSS payload"
         }
-
-      }
-
-    }
-
-  }
-
+    ]
 }
-
