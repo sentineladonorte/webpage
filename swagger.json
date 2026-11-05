@@ -6,9 +6,9 @@
   },
   "url": "https://sentineladonorte.com/",
   "urls": [
-      {
-          "url": "https://sentineladonorte.com/swagger.yaml",
-          "name": "XSS payload"
-      }
+    {
+      "url": "https://sentineladonorte.com/swagger.yaml",
+      "name": "XSS payload"
+    }
   ]
 }
